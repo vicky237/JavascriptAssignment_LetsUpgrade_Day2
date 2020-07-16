@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Assignment</title>
+    <style>
+        li,h5,h4
+        {
+            text-transform:capitalize;
+        }
+        h3
+        {
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h3>Question 1</h3>
+            <p>Write a JS code which takes input from the user and logs it in the console</p>
+            <h4>Answer</h4>
+            <pre>
+            <code>
+                let getUservalue;
+                getUservalue = prompt('Q1.Enter the value');
+                console.log(getUservalue);
+            </code>
+            </pre>
+        </div>
+        <div>
+            <h3>
+                Question 2
+            </h3>
+            <p>Explain with examples the remaining methods of String and Array</p>
+            <h4>String Methods</h4>
+            <ul>
+                <li>substring </li>
+                <li>substr </li>
+                <li>slice</li>
+                <li>match</li>
+                <li>replace</li>
+                <li>concat</li>
+                <li>search</li>
+                <li>split</li>
+                <li>localeCompare</li>
+            </ul>
+
+            <h5>substring</h5>
+            <p>Returns the characters in a string between two indexes into the string</p>
+            <p>Example</p>
+            <pre><code>
+                    let str = 'Apples are round, and apples are juicy.';
+                    console.log(str.substring(1,2));
+                    Result:p                
+                </code></pre>
+            <h5>substr</h5>
+            <p>Returns the characters in a string beginning at the specified location through the specified number of
+                characters.</p>
+            <p>Example</p>
+            <pre><code>
+                    let str = 'Apples are round, and apples are juicy.';
+                    console.log(str.substr(1,2));
+                    Result:pp                
+                </code></pre>
+            <h5>slice</h5>
+            <p>Extracts a section of a string and returns a new string.</p>
+            <p>Example</p>
+            <pre><code>
+                    let str = "Apples are round, and apples are juicy.";
+                    let sliced = str.slice(3, -2);   
+                    console.log(sliced);
+                    Result:les are round, and apples are juic                
+                </code></pre>
+            <h5>Match</h5>
+            <p> Used to match a regular expression against a string.</p>
+            <p>Example</p>
+            <pre><code>
+                    var str = "For more information, see Chapter 3.4.5.1";
+                    var re = /(chapter \d+(\.\d)*)/i;
+                    var found = str.match( re );     
+                    Result:Chapter 3.4.5.1,Chapter 3.4.5.1,.1             
+                </code></pre>
+            <h5>Replace</h5>
+            <p> Used to find a match between a regular expression and a string, and to replace the matched substring
+                with a new substring.</p>
+            <p>Example</p>
+            <pre><code>
+                    var re = /apples/gi;
+                    var str = "Apples are round, and apples are juicy.";
+                     var newstr = str.replace(re, "oranges");      
+                    Result:oranges are round, and oranges are juicy.           
+                </code></pre>
+            <h5>Search</h5>
+            <p> Executes the search for a match between a regular expression and a specified string.</p>
+            <p>Example</p>
+            <pre><code>
+                    var re = /apples/gi;
+                    var str = "Apples are round, and apples are juicy.";
+                    if ( str.search(re) == -1 ) {
+                        console.log("Does not contain Apples" );
+                     } else {
+                        console.log("Contains Apples" );
+                     }    
+                        Result:Contains Apples         
+                    </code></pre>
+            <h5>localeCompare</h5>
+            <p>Returns a number indicating whether a reference string comes before or after or is the same as the given
+                string in sort order.</p>
+            <p>Example</p>
+            <pre><code>  
+                        var str1 = new String( "This is beautiful string" );
+                        var index = str1.localeCompare( "XYZ" );
+                        console.log("localeCompare first :" + index );       
+                        var index = str1.localeCompare( "AbCD ?" );
+                        console.log("localeCompare second :" + index ); 
+                            Result:
+                            localeCompare first :-1
+                            localeCompare second :1         
+                        </code></pre>
+
+            <h4>Array </h4>
+            <ol>
+                <li>concat</li>
+                <li>every</li>
+                <li>filter</li>
+                <li>forEach</li>
+                <li>join</li>
+                <li>map</li>
+                <li>reduce</li>
+            </ol>
+            <div>
+                <h4>concat</h4>
+                <p>Returns a new array comprised of this array joined with other array(s) and/or value(s).</p>
+                <p>Example</p>
+                <pre><code>
+                    var alpha = ["a", "b", "c"];
+                    var numeric = [1, 2, 3];
+                    var alphaNumeric = alpha.concat(numeric);
+                    console.log("alphaNumeric : " + alphaNumeric ); 
+                    Result:
+                    alphaNumeric : a,b,c,1,2,3 
+                </code></pre>
+            </div>
+            <div>
+                <h4>Every</h4>
+                <p>Returns true if every element in this array satisfies the provided testing function.</p>
+                <p>Example</p>
+                <pre><code>
+                    if (!Array.prototype.every) {
+                        Array.prototype.every = function(fun /*, thisp*/) {
+                           var len = this.length;
+                           if (typeof fun != "function")
+                           throw new TypeError();
+                           
+                           var thisp = arguments[1];
+                           for (var i = 0; i < len; i++) {
+                              if (i in this && !fun.call(thisp, this[i], i, this))
+                              return false;
+                           }
+                           return true;
+                        };
+                     }
+                     function isBigEnough(element, index, array) {
+                        return (element >= 10);
+                     }
+                     var passed = [12, 5, 8, 130, 44].every(isBigEnough);
+                     console.log("First Test Value : " + passed ); 
+                     
+                     passed = [12, 54, 18, 130, 44].every(isBigEnough);
+                     console.log("Second Test Value : " + passed ); 
+                    Result:
+                    First Test Value : falseSecond Test Value : true
+                </code></pre>
+            </div>
+            <div>
+                <h4>filter</h4>
+                <p>Creates a new array with all of the elements of this array for which the provided filtering function
+                    returns true.</p>
+                <p>Example</p>
+                <pre><code>
+                    if (!Array.prototype.filter) {
+                        Array.prototype.filter = function(fun /*, thisp*/) {
+                           var len = this.length;
+                        
+                           if (typeof fun != "function")
+                           throw new TypeError();
+                        
+                           var res = new Array();
+                           var thisp = arguments[1];
+                        
+                           for (var i = 0; i < len; i++) {
+                              if (i in this) {
+                                 var val = this[i];   // in case fun mutates this
+                                 if (fun.call(thisp, val, i, this))
+                                 res.push(val);
+                              }
+                           }
+                           return res;
+                        };
+                     }
+                     function isBigEnough(element, index, array) {
+                        return (element >= 10);
+                     }
+                     var filtered  = [12, 5, 8, 130, 44].filter(isBigEnough);
+                     document.write("Filtered Value : " + filtered ); 
+                    Result:
+                    Filtered Value : 12,130,44 
+                </code></pre>
+            </div>
+            <div>
+                <h4>forEach</h4>
+                <p>Calls a function for each element in the array.</p>
+                <p>Example</p>
+                <pre><code>
+                    if (!Array.prototype.forEach) {
+                        Array.prototype.forEach = function(fun /*, thisp*/) {
+                           var len = this.length;
+                           
+                           if (typeof fun != "function")
+                           throw new TypeError();
+                           
+                           var thisp = arguments[1];
+                           for (var i = 0; i < len; i++) {
+                              if (i in this)
+                              fun.call(thisp, this[i], i, this);
+                           }
+                        };
+                     }
+                     function printBr(element, index, array) {
+                        document.write("<br />[" + index + "] is " + element ); 
+                     }
+                     [12, 5, 8, 130, 44].forEach(printBr);
+                    Result:
+                    [0] is 12
+                    [1] is 5
+                    [2] is 8
+                    [3] is 130
+                    [4] is 44 
+                </code></pre>
+            </div>
+            <div>
+                <h4>join</h4>
+                <p>Joins all elements of an array into a string.</p>
+                <p>Example</p>
+                <pre><code>
+                    var arr = new Array("First","Second","Third");         
+                    var str = arr.join();
+                    console.log("str : " + str );                    
+                    Result:
+                    str : First,Second,Third
+                </code></pre>
+            </div>
+            <div>
+                <h4>Map</h4>
+                <p>Creates a new array with the results of calling a provided function on every element in this array.</p>
+                <p>Example</p>
+                <pre><code>
+                    if (!Array.prototype.map) {
+                        Array.prototype.map = function(fun /*, thisp*/) {
+                           var len = this.length;
+                           
+                           if (typeof fun != "function")
+                           throw new TypeError();
+                           
+                           var res = new Array(len);
+                           var thisp = arguments[1];
+                           
+                           for (var i = 0; i < len; i++) {
+                              if (i in this)
+                              res[i] = fun.call(thisp, this[i], i, this);
+                           }
+                           return res;
+                        };
+                     }
+                     var numbers = [1, 4, 9];
+                     var roots = numbers.map(Math.sqrt);
+                     document.write("roots is : " + roots );                    
+                    Result:
+                    roots is : 1,2,3
+                </code></pre>
+            </div>
+            <div>
+                <h4>reduce</h4>
+                <p>Apply a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value.</p>
+                <p>Example</p>
+                <pre><code>
+                    if (!Array.prototype.reduce) {
+                        Array.prototype.reduce = function(fun /*, initial*/) {
+                           var len = this.length;
+                           
+                           if (typeof fun != "function")
+                           throw new TypeError();
+                           
+                           // no value to return if no initial value and an empty array
+                           if (len == 0 && arguments.length == 1)
+                           throw new TypeError();
+                           
+                           var i = 0;
+                           if (arguments.length >= 2) {
+                              var rv = arguments[1];
+                           } else {
+                              do {
+                                 if (i in this) {
+                                    rv = this[i++];
+                                    break;
+                                 }
+                                 
+                                 // if array contains no values, no initial value to return
+                                 if (++i >= len)
+                                 throw new TypeError();
+                              }
+                              while (true);
+                           }
+                           for (; i < len; i++) {
+                              if (i in this)
+                              rv = fun.call(null, rv, this[i], i, this);
+                           }
+                           return rv;
+                        };
+                     }
+                     var total = [0, 1, 2, 3].reduce(function(a, b){ return a + b; });
+                     document.write("total is : " + total );                
+                    Result:
+                    total is : 6
+                </code></pre>
+            </div>
+        </div>
+    </main>
+    <script defer>
+        let getUservalue;
+        getUservalue = prompt('Q1.Enter the value');
+        console.log(getUservalue);
+    </script>
+</body>
+
+</html>
